@@ -20,6 +20,8 @@
       "x86_64-linux"
     ];
 
+   overlays = [];
+
     eachPkgs = nixpkgs.lib.genAttrs systems (
       system:
         import nixpkgs {
