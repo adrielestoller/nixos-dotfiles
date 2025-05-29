@@ -23,7 +23,7 @@
       TERMINAL = lib.getExe pkgs.kitty;
     };
     
-    stateVErsion = "25.05";
+    stateVersion = "25.05";
   };
 
   programs = {

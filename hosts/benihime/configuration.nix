@@ -3,7 +3,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    inputs.home-manager.nixosModules.default
   ];
 
   boot = {
@@ -24,14 +23,10 @@
 
   networking = {
     hostName = "benihime";
-    nameservers = [
-      "1.0.0.1"
-      "1.1.1.1"
-    ];
     networkmanager = {
       enable = true;
-      dns = "none";
       wifi.powersave = false;
+    };
   };
 
   time.timeZone = "America/Recife";
@@ -88,8 +83,6 @@
   };
 
   programs.firefox.enable = true;
-
-  nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
      vim
