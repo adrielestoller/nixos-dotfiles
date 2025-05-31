@@ -18,6 +18,10 @@
       intel-compute-runtime
       intel-media-driver
       intel-vaapi-driver
+      libvdpau-va-gl
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
     ];
   };
 
@@ -82,13 +86,33 @@
     extraGroups = [ "networkmanager" "wheel" "audio" "video" ];
   };
 
-  programs.firefox.enable = true;
-
   environment.systemPackages = with pkgs; [
      vim
      git
      github-cli
   ];
+
+  fonts = {
+    fontDir.enable = true;
+    fontconfig.useEmbeddedBitmaps = true;
+    packages = with pkgs; [
+      noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      roboto
+      roboto-mono
+      roboto-serif
+      freefont_ttf
+      jetbrains-mono
+    ];
+  };
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+  };
 
   system.stateVersion = "25.05"; 
   
